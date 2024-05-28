@@ -5,12 +5,14 @@ import { loadAccount } from "../../store/interactions.js";
 import { useDispatch, useSelector } from "react-redux";
 import Blockies from "react-blockies";
 import config from "../../config.json";
+
 import { useFirebase } from "../../firebaseconfig.js";
 // import { Link } from "react-router-dom";
 const Navbar = () =>{
-  const {LogOut}=useFirebase();
+  const {LogOut,removeUserDocRef}=useFirebase();
   const handleLogOut= ()=>{
     LogOut();
+    removeUserDocRef();
     window.location.href="/"
   }
   
@@ -76,6 +78,7 @@ const Navbar = () =>{
               </>
           )}
           <button onClick={handleLogOut} class="border-2 text-white border-white rounded-full py-2 px-6 mx-8 cursor-pointer">Logout</button>
+        
       </div>
   </div>
   

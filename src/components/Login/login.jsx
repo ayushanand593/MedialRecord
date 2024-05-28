@@ -15,7 +15,7 @@ const Login = () => {
   const [showOTP, setShowOTP] = useState(false);
   // const [user, setUser] = useState(null);
   const navigate = useNavigate();
-  const { auth, isLoggedIn, signInUserWithPhoneNumber } = useFirebase();
+  const { auth, isLoggedIn, signInUserWithPhoneNumber,handleUser } = useFirebase();
 
   //Redirecting user to homepage after entering phoneNumber in firestore
   useEffect(() => {
@@ -72,6 +72,8 @@ const Login = () => {
     window.confirmationResult
       .confirm(otp)
       .then((result) => {
+        console.log(result.user);
+        handleUser(result.user);
         // setUser(result.user);
         setLoading(false);
       })
@@ -86,7 +88,7 @@ const Login = () => {
   //console.log(user);
 
   return (
-    <section className="bg-cyan-600 flex items-center justify-center overflow-hidden h-screen">
+    <section className="bg-cyan-600 flex items-center justify-center overflow-hidden h-[100vh] md:h-[60vh]">
       <div className=" bg-cyan-700">
         <Toaster toastOptions={{ duration: 4000 }} />
         <div id="recaptcha-container"></div>

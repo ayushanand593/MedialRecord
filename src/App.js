@@ -7,7 +7,10 @@ import { Form, Navbar } from './components';
 import config from "./config.json"
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Login from './components/Login/login';
+import Data from './components/Data/data';
 import { FirebaseProvider } from './firebaseconfig';
+import Footer from './components/Footer/footer';
+import Feature from './components/Feature/feature';
 
 const router=createBrowserRouter([
 {
@@ -15,6 +18,9 @@ const router=createBrowserRouter([
   element:(
     <FirebaseProvider>
     <Login />
+    <Feature/>
+    <Footer/>
+    
     </FirebaseProvider>
   )
 },
@@ -25,6 +31,19 @@ const router=createBrowserRouter([
     <FirebaseProvider>
       <Navbar />
       <Form />
+      <Footer/>
+      </FirebaseProvider>
+    </>
+  )
+},
+{
+  path:"/showdata",
+  element:(
+    <>
+  <FirebaseProvider>
+      <Navbar />
+      <Data/>
+      <Footer/>
       </FirebaseProvider>
     </>
   )
